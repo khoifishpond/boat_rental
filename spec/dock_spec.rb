@@ -6,7 +6,13 @@ require './lib/boat'
 describe Dock do
   dock = Dock.new("The Rowing Dock", 3)
   
-  it 'exists' do
-    expect(dock).to be_a(Dock)
+  context 'Attributes' do
+    it 'exists' do
+      expect(dock).to be_a(Dock)
+    end
+
+    it 'has a name' do
+      expect(dock.name).to eq("The Rowing Dock")
+    end
   end
 end
