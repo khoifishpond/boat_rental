@@ -21,4 +21,14 @@ describe Boat do
       expect(kayak.hours_rented).to eq(0)
     end
   end
+
+  context 'Rent' do
+    it 'can add hours' do
+      kayak.add_hour
+      kayak.add_hour
+      kayak.add_hour
+
+      expect(kayak.hours_rented).to eq(3)
+    end
+  end
 end
