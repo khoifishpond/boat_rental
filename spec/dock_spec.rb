@@ -14,5 +14,9 @@ describe Dock do
     it 'has a name' do
       expect(dock.name).to eq("The Rowing Dock")
     end
+
+    it 'has a maximum rental time' do
+      expect(dock.max_rental_time).to eq(3)
+    end
   end
 end
