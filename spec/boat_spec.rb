@@ -16,5 +16,9 @@ describe Boat do
     it 'has a price per hour' do
       expect(kayak.price_per_hour).to eq(20)
     end
+
+    it 'starts with 0 hours rented' do
+      expect(kayak.hours_rented).to eq(0)
+    end
   end
 end
