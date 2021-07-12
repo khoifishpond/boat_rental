@@ -26,16 +26,27 @@ describe Dock do
   end
 
   context 'Rent' do
-    it 'can store rentals in a log' do
-      # does this need testing?
-      dock.rent(kayak_1, patrick)
-      dock.rent(kayak_2, patrick)
-      dock.rent(sup_1, eugene)
+    # does this need testing?
+    dock.rent(kayak_1, patrick)
+    dock.rent(kayak_2, patrick)
+    dock.rent(sup_1, eugene)
 
+    it 'can store rentals in a log' do
       expect(dock.rental_log).to eq({
         kayak_1 => patrick,
         kayak_2 => patrick,
         sup_1 => eugene
+      })
+    end
+
+    it 'can charge' do
+      kayak_1.add_hour
+      kayak_1.add_hour
+      dock.charge(kayak_1)
+
+      expect(dock.charge(kayak_1)).to eq({
+        :card_number => "4242424242424242",
+        :amount => 40
       })
     end
   end
