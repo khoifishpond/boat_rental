@@ -1,5 +1,5 @@
 class Dock
-  attr_reader :name, :max_rental_time, :rental_log, :charged, :boats_returned
+  attr_reader :name, :max_rental_time, :rental_log, :charged, :boats_returned, :total_revenue
 
   def initialize(name, max_rental_time)
     @name = name
@@ -7,6 +7,7 @@ class Dock
     @rental_log = {}
     @charged = {}
     @boats_returned = []
+    @total_revenue = 0
   end
 
   def rent(boat, renter)
@@ -30,14 +31,16 @@ class Dock
   end
 
   def revenue
-    total_revenue = 0
-
-    
+    if @boats_returned.empty? == false
+      amounts_charged = @boats_returned.map { |boat| charge(boat)[:amount] }
+      @boats_returned.clear
+      @total_revenue += amounts_charged.sum
+    else
+      @total_revenue
+    end
   end
 
   def log_hour
-    @rental_log.each_key do |boat|
-      boat.add_hour
-    end
+    @rental_log.each_key { |boat| boat.add_hour }
   end
 end
