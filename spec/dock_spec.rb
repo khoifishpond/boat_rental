@@ -70,6 +70,7 @@ describe Dock do
       @sup_1.add_hour
       @sup_1.add_hour
       @sup_1.add_hour
+
       expect(@dock.charge(@sup_1)).to eq({
         :card_number => "1313131313131313",
         :amount => 45
@@ -77,6 +78,7 @@ describe Dock do
 
       @sup_1.add_hour
       @sup_1.add_hour
+
       expect(@dock.charge(@sup_1)).to eq({
         :card_number => "1313131313131313",
         :amount => 45
@@ -105,15 +107,13 @@ describe Dock do
       @dock.log_hour
       @dock.rent(@canoe, @patrick)
       @dock.log_hour
-
-      # revenue should not be calculated until boats are returned
+      
       expect(@dock.revenue).to eq(0)
 
       @dock.return(@kayak_1)
       @dock.return(@kayak_2)
       @dock.return(@canoe)
 
-      # revenue thus far
       expect(@dock.revenue).to eq(105)
 
       @dock.rent(@sup_1, @eugene)
@@ -122,13 +122,11 @@ describe Dock do
       @dock.log_hour
       @dock.log_hour
       
-      # hours past rent don't factor into revenue
       @dock.log_hour
       @dock.log_hour
       @dock.return(@sup_1)
       @dock.return(@sup_2)
 
-      # total revenue
       expect(@dock.revenue).to eq(195)
     end
   end
