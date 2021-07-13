@@ -106,13 +106,30 @@ describe Dock do
       @dock.rent(@canoe, @patrick)
       @dock.log_hour
 
+      # revenue should not be calculated until boats are returned
       expect(@dock.revenue).to eq(0)
 
       @dock.return(@kayak_1)
       @dock.return(@kayak_2)
       @dock.return(@canoe)
 
+      # revenue thus far
       expect(@dock.revenue).to eq(105)
+
+      @dock.rent(@sup_1, @eugene)
+      @dock.rent(@sup_2, @eugene)
+      @dock.log_hour
+      @dock.log_hour
+      @dock.log_hour
+      
+      # hours past rent don't factor into revenue
+      @dock.log_hour
+      @dock.log_hour
+      @dock.return(@sup_1)
+      @dock.return(@sup_2)
+
+      # total revenue
+      expect(@dock.revenue).to eq(195)
     end
   end
 end
