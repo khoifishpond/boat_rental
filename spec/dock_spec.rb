@@ -107,7 +107,7 @@ describe Dock do
       @dock.log_hour
       @dock.rent(@canoe, @patrick)
       @dock.log_hour
-      
+
       expect(@dock.revenue).to eq(0)
 
       @dock.return(@kayak_1)
@@ -121,7 +121,6 @@ describe Dock do
       @dock.log_hour
       @dock.log_hour
       @dock.log_hour
-      
       @dock.log_hour
       @dock.log_hour
       @dock.return(@sup_1)
