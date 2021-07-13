@@ -7,13 +7,6 @@ describe Dock do
   context 'Attributes' do
     before(:each) do
       @dock = Dock.new("The Rowing Dock", 3)
-      @kayak_1 = Boat.new(:kayak, 20)
-      @kayak_2 = Boat.new(:kayak, 20)
-      @canoe = Boat.new(:canoe, 25)
-      @sup_1 = Boat.new(:standup_paddle_board, 15)
-      @sup_2 = Boat.new(:standup_paddle_board, 15)
-      @patrick = Renter.new("Patrick Star", "4242424242424242")
-      @eugene = Renter.new("Eugene Crabs", "1313131313131313")
     end
     
     it 'exists' do
